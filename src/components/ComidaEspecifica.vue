@@ -3,13 +3,15 @@
         <h2>Testeo de comida específica. Comida: {{nombre}}</h2>
         <p>Descripción: {{descripcion}}</p>
         <p>Ubicación: {{ubicacion}}</p>
-        <p v-if="comida.video==null">No hay video disponible</p>
+        <p v-if="video==null">No hay video disponible</p>
         <div v-if="video!=null"> 
             <div class="embed-responsive embed-responsive-16by9">     
             <iframe class="embed-responsive-item" :src="'https://www.youtube.com/embed/'+video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
         </div>
-        <img class="img" :src=comida.imagen onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Imagen_no_disponible.svg/1024px-Imagen_no_disponible.svg.png';" alt="Imagen no disponible">
+        <img class="img" :src=imagen onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Imagen_no_disponible.svg/1024px-Imagen_no_disponible.svg.png';" alt="Imagen no disponible">
+        <p>Testeando compartido en comidaespecifica: {{$store.state.numero}}</p>
+        <button @click="$store.commit('aumentar', 2)">+</button>
     </div>
 </template>
 

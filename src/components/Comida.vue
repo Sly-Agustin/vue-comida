@@ -23,7 +23,7 @@
         <div class="row" v-if="comidas">
             <div class="col-sm-4" v-for="comida in comidas" :key="comida.id_comida">
                 <div v-bind:id="'comidanro'+comida.id_comida" class="card bg-transparent">
-                    <img width="200" height="200" class="card-img-top img" :src=comida.imagen onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Imagen_no_disponible.svg/1024px-Imagen_no_disponible.svg.png';" alt="Imagen no disponible">
+                    <img v-if="comida.imagen!=null" width="200" height="200" class="card-img-top img" :src=comida.imagen onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Imagen_no_disponible.svg/1024px-Imagen_no_disponible.svg.png';" alt="Imagen no disponible">
                     <hr class="m-0 p-0">
                     <div class="card-body">
                         <h3 class="card-title text-left">{{comida.nombre}}</h3>
@@ -35,6 +35,8 @@
         <ul id="errorComida" v-if="errorComida">
             <p>Error: {{errorComida}}</p>
         </ul>
+        <p>Testeando compartido en comida: {{$store.state.numero}}</p>
+        <button @click="$store.commit('disminuir')">-</button>
         <hr>
     </div>
 </template>
