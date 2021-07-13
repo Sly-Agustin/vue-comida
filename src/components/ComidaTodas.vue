@@ -27,47 +27,35 @@
 </template>
 
 <script>
-export default {
-  name: 'Comida',
-  // Propiedades que puede recibir de un componente padre
-  props: {
-    
-  },
-  // Variables de estado, pueden cambiar en la ejecución de la página
-  data: function() {
-      return {
-          etiquetaACambiar: 'Nombre inicial',
-          comidas: null,
-          errorComida: null,
-          imagenesComidas: null,
-      };
-  },
-  // Esto se ejecuta cuando se monta la página
-  mounted(){
-      var direccion ="http://127.0.0.1:8000/api/comidas/";
-      fetch(direccion)   /*Hace la consulta a la API */
-        .then((res) => res.json())                  /*Encapsula la respuesta en JSON */
-        .then(
-            (result) => {
-                this.comidas = result;              /*Asigna el resultado a la variable comidas */
-                this.imagenesComidas=[];
-                for(var i = 0; i < this.comidas.length; i+=1) {
-                    this.imagenesComidas.push(this.comidas[i]);
-                }
-            },
-            (error) => {
-                this.errorComida = error;
-            }
-        );
+import {mapState, mapActions, mapMutations} from 'vuex';
 
-  },
-  // Métodos JS que se ejecutan en este archivo vue
-  methods: {
-      verQueHayEnCampos: function() {
-            var inputVal = document.getElementById("testText").value;
-            alert("El valor en el campo es: "+inputVal);
-      },
-  },
+export default {
+    name: 'Comida',
+    // Propiedades que puede recibir de un componente padre
+    props: {
+        
+    },
+    // Variables de estado, pueden cambiar en la ejecución de la página
+    data: function() {
+        return {
+            errorComida: null,
+        };
+    },
+    // Esto se ejecuta cuando se monta la página
+    mounted(){
+        
+    },
+    // Métodos JS que se ejecutan en este archivo vue
+    computed: {
+        ...mapState(['comidas']),
+    },
+    methods: {
+        ...mapMutations(['comidaMutacion']),
+        ...mapActions(['obtenerComidasAction']),
+    },
+    beforeMount(){
+        this.obtenerComidasAction();
+    },
 }
 </script>
 

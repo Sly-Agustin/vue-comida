@@ -14,8 +14,8 @@ const store = new Vuex.Store({
       numero: 10,
       comidas: [],
       ingredientes: [],
-      comidaEspecifica: null,
-      ingredienteEspecifico: null,
+      comidaActual: null,
+      ingredienteActual: null,
     },
     mutations: {
       aumentar(state, n){
@@ -38,6 +38,11 @@ const store = new Vuex.Store({
       }*/
       obtenerComidasAction: async function ({ commit }){
         const datos = await fetch('http://127.0.0.1:8000/api/comidas/');
+        const coms = await datos.json();
+        commit('comidaMutacion', coms);
+      },
+      obtenerComidaEspecificaAction: async function ({ commit }, id){
+        const datos = await fetch('http://127.0.0.1:8000/api/comidas/'+id);
         const coms = await datos.json();
         commit('comidaMutacion', coms);
       }
