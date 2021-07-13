@@ -3,6 +3,7 @@ import Vuex from 'vuex'
 import App from './App.vue'
 import './assets/css/fonts.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
+import router from './router'
 
 Vue.config.productionTip = false
 
@@ -12,6 +13,9 @@ const store = new Vuex.Store({
     state: {
       numero: 10,
       comidas: [],
+      ingredientes: [],
+      comidaEspecifica: null,
+      ingredienteEspecifico: null,
     },
     mutations: {
       aumentar(state, n){
@@ -43,5 +47,6 @@ const store = new Vuex.Store({
 // Renderiza el archivo App.vue y lo pone en el div con id="app" en el archivo index.html
 new Vue({
   render: h => h(App),
-  store: store,
+  router,
+  store: store
 }).$mount('#app')

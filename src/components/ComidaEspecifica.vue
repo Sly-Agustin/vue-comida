@@ -1,6 +1,6 @@
 <template>
     <div class="fontRoboto">
-        <h2>Testeo de comida específica. Comida: {{nombre}}</h2>
+        <h2>Testeo de comida específica. Comida: {{nombre}}. Id: {{$route.params.id}}</h2>
         <p>Descripción: {{descripcion}}</p>
         <p>Ubicación: {{ubicacion}}</p>
         <p v-if="video==null">No hay video disponible</p>
@@ -33,7 +33,8 @@ export default {
         };
     },
     mounted(){
-        var direccion ="http://127.0.0.1:8000/api/comidas/"+this.id;
+        var direccion ="http://127.0.0.1:8000/api/comidas/"+this.$route.params.id;
+        //console.log(direccion);
         fetch(direccion)
             .then((res) => res.json())
             .then(

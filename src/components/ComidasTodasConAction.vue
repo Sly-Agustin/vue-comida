@@ -28,5 +28,8 @@ a ese estado global y por cada comida disponible las listamos en orden de llegad
             ...mapMutations(['comidaMutacion']),
             ...mapActions(['obtenerComidasAction']),
         },
+        beforeMount(){
+            this.obtenerComidasAction();
+        },
     }
 </script>
