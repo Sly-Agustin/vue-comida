@@ -14,7 +14,7 @@
                     </div>
 
 
-                    <div v-for="elemento in recetaActual.pasos" :key="elemento.id_paso">
+                    <div class="py-4" v-for="elemento in recetaActual.pasos" :key="elemento.id_paso">
                         <h3>Paso {{elemento.numeroDePaso}}: {{elemento.titulo}}</h3>
                         <textarea class="form-control" rows="3" disabled :value=elemento.descripcion></textarea>
                     </div>      
