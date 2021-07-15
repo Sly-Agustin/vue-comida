@@ -2,11 +2,11 @@
     <div>
         <h3>Desea buscar un ingrediente en específico? O alguno que sea parecido?</h3>
         <input type="text" id="busquedaIngredientes" name="busquedaIngredientes" class="form-control" placeholder="Ingrese valor">
-        <button class="btn btn-primary my-2" @click="buscarIngredientesApi">Buscar</button>
+        <button class="normalButton my-2" @click="buscarIngredientesApi">Buscar</button>
         <div class="col-sm-4" v-for="ingrediente in resultadoBusquedaIngredientes" :key="ingrediente.id_ingrediente">         
             <div v-bind:id="'ingredientebuscadoID'+ingrediente.id_ingrediente" @click="setearIngredienteActual(ingrediente.id_ingrediente, ingrediente.nombre)">
                 {{ingrediente.nombre}} | <button class="btn" @click="modificarIngredienteActualMutacion(ingrediente.nombre)">detalles</button>
-                <IngredienteEspecifico :nombre=ingrediente.nombre :id=ingrediente.id_ingrediente :descripcion=ingrediente.descripcion :caracteristicas=ingrediente.caracteristicas :ubicacion=ingrediente.ubicacion :imagen=ingrediente.imagen />
+                <IngredienteEspecifico :nombre=ingrediente.nombre :id=ingrediente.id_ingrediente :descripcion=ingrediente.descripcion :caracteristicas=ingrediente.caracteristicas :ubicacion=ingrediente.ubicacion :imagen=ingrediente.imagen :tipo=ingrediente.tipo />
             </div>
         </div>
     </div>

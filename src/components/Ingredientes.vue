@@ -1,7 +1,6 @@
 <template>
     <div class="fontRoboto">
-        <hr>
-        <h1>Ingredientes</h1>
+        <h1 class="py-4 my-2 colorBackgroundSuave">Ingredientes</h1>
         <!--A partir de aca testeamos la conexión con la API, en este caso trayendo las comidas-->
         <hr>
         <IngredientesBuscador></IngredientesBuscador>
@@ -33,7 +32,7 @@
         <div class="d-flex justify-content-center my-2" id="nomasingredientes">
             <p class="text-white text-center w-25 bg-secondary">{{ingredienteFull}}</p>
         </div>
-        <button @click="agregarMasIngredientesMutacion" class="btn btn-primary my-4">Ver más ingredientes</button>
+        <button @click="agregarMasIngredientesMutacion" class="normalButton my-4">Ver más ingredientes</button>
         </div>
         <hr>
     </div>

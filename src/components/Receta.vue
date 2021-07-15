@@ -1,8 +1,8 @@
 <template>
     <div class="fontRoboto">
+        <h1 class="py-4 my-2 colorBackgroundSuave">Receta de {{comidaActual.nombre}}</h1>
         <hr>
-        <h1>Receta de {{comidaActual.nombre}}</h1>
-        <hr>
+        <h5>Autor: {{recetaActual.receta.usuario_nombre}}</h5>
         <div class="row">
             <div class="col-sm-9">
                 <div :v-if="recetaActual">
@@ -17,9 +17,7 @@
                     <div v-for="elemento in recetaActual.pasos" :key="elemento.id_paso">
                         <h3>Paso {{elemento.numeroDePaso}}: {{elemento.titulo}}</h3>
                         <textarea class="form-control" rows="3" disabled :value=elemento.descripcion></textarea>
-                        <p>{{elemento}}</p>
-                    </div>
-                    <p>{{recetaActual}}</p>          
+                    </div>      
                 </div>
             </div>
             <div class="col-sm-3 border-left">

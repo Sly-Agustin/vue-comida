@@ -1,11 +1,6 @@
 <template>
   <div class="container" id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/comidas">Comidas</router-link> |
-      <router-link to="/ingredientes">Ingredientes</router-link>
-    </div>
+    <NavbarApp/>
     <router-view :key="$route.path"/>
 
     <!--<ComidasConAction></ComidasConAction>-->
@@ -21,6 +16,7 @@
 //import ComidaEspecifica from './components/ComidaEspecifica.vue'
 //import Comida from './components/Comida.vue';
 //import ComidasConAction from './components/ComidasConAction.vue';
+import NavbarApp from './components/NavbarApp.vue';
 
 export default {
   name: 'App',
@@ -29,6 +25,7 @@ export default {
     //Comida,
     //ComidaEspecifica,
     //ComidasConAction,
+    NavbarApp,
   },
 }
 </script>
