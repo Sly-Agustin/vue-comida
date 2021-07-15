@@ -59,7 +59,7 @@ export default {
         this.obtenerComidaEspecificaAction(this.$route.params.id);
     },
     mounted(){
-        var direccion = "http://127.0.0.1:8000/api/recetasDeComida/"+this.$route.params.id;
+        var direccion = "https://sly-agustin-laravel.herokuapp.com/api/recetasDeComida/"+this.$route.params.id;
         fetch(direccion).then((res) => res.json())
             .then(
                 (result) => {

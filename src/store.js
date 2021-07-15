@@ -21,7 +21,7 @@ export default new Vuex.Store({
     },
     actions: {
         obtenerComidasAction: async function ({ commit }){
-            const datos = await fetch('http://127.0.0.1:8000/api/comidas/');
+            const datos = await fetch('https://sly-agustin-laravel.herokuapp.com/api/comidas/');
             const coms = await datos.json();
             commit('comidaMutacion', coms);
         }

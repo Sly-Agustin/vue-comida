@@ -35,7 +35,7 @@ export default {
 
         buscarIngredientesApi: function() {
             var inputVal = document.getElementById("busquedaIngredientes").value;
-            var direccion ="http://127.0.0.1:8000/api/busqueda/ingredientes/"+inputVal;
+            var direccion ="https://sly-agustin-laravel.herokuapp.com/api/busqueda/ingredientes/"+inputVal;
             fetch(direccion)
                 .then((res) => res.json())
                 .then(
