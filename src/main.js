@@ -141,12 +141,12 @@ const store = new Vuex.Store({
         commit('comidaEspecificaMutacion', coms);
       },
       obtenerIngredientesAction: async function ({ commit }){
-        const datos = await fetch('https://sly-agustin-laravel.herokuapp.com/api/ingredientes/');
+        const datos = await fetch('https://sly-agustin-laravel.herokuapp.com/api/ingredientes');
         const coms = await datos.json();
         commit('ingredienteMutacion', coms);
       },
       obtenerRecetaEspecificaAction: async function ({ commit }, id){
-        const datos = await fetch('https://sly-agustin-laravel.herokuapp.com/api/receta/'+id);
+        const datos = await fetch('https://sly-agustin-laravel.herokuapp.com/api/receta'+id);
         const coms = await datos.json();
         commit('recetaMutacion', coms);
       }
