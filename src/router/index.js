@@ -26,7 +26,7 @@ const routes = [
   {
     path: '/comidas/:id',
     name: 'ComidaEspecifica',
-    component: () => import(/* webpackChunkName: "ComidaTodas" */ '../components/ComidaEspecifica.vue')
+    component: () => import(/* webpackChunkName: "ComidaEspecifica" */ '../components/ComidaEspecifica.vue')
   },
   {
     path: '/comidastest',
@@ -37,6 +37,16 @@ const routes = [
     path: '/comidasaction',
     name: 'Comidasaction',
     component: () => import(/* webpackChunkName: "ComidaConAction" */ '../components/ComidasTodasConAction.vue')
+  },
+  {
+    path: '/ingredientes',
+    name: 'Ingredientes',
+    component: () => import(/* webpackChunkName: "Ingredientes" */ '../components/Ingredientes.vue')
+  },
+  {
+    path: '/receta/:id_comida/:id',
+    name: 'Receta',
+    component: () => import(/* webpackChunkName: "Receta" */ '../components/Receta.vue')
   },
 ]
 

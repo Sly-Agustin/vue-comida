@@ -1,21 +1,41 @@
 <template>
     <div class="fontRoboto">
-        <h2>Testeo de comida específica. Comida: {{nombre}}. Id: {{$route.params.id}}</h2>
-        <p>Descripción: {{descripcion}}</p>
-        <p>Ubicación: {{ubicacion}}</p>
-        <p v-if="video==null">No hay video disponible</p>
-        <div v-if="video!=null"> 
-            <div class="embed-responsive embed-responsive-16by9">     
-            <iframe class="embed-responsive-item" :src="'https://www.youtube.com/embed/'+video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        <h2>Comida: {{comidaActual.nombre}}</h2>
+        <div class="row">
+            <div class="col-9">
+                <p>Descripción: {{comidaActual.descripcion}}</p>
+                <p>Ubicación: {{comidaActual.ubicacion}}</p>
+                <div v-if="comidaActual.video!=null"> 
+                    <div class="embed-responsive embed-responsive-16by9">     
+                    <iframe class="embed-responsive-item" :src="'https://www.youtube.com/embed/'+comidaActual.video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+                    </div>
+                </div>
+                <img class="img" :src=comidaActual.imagen onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Imagen_no_disponible.svg/1024px-Imagen_no_disponible.svg.png';" alt="Imagen no disponible">
+                <!--<p>Comida compartida: {{$store.state.comidaActual}}</p>-->
+            </div>
+            <div class="col-3">
+                <div class="container">
+                    <h3>Recetas</h3>
+                    <p v-if="recetas==null">No hay recetas para esta comida</p>
+                    <div v-if="recetas">
+                        <ul class="list-group" v-for="receta of recetas" :key="receta.id_receta">
+                            <li class="list-group-item d-flex justify-content-between align-items-center">
+                                <p>Receta de: {{receta.usuario_nombre}}</p>
+                                <span v-if="receta.cantidadVotos==0" class="">No hay puntuación</span>
+                                <span v-if="receta.cantidadVotos>0" class="">★ {{receta.puntuacionTotal/receta.cantidadVotos}} </span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
-        <img class="img" :src=imagen onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Imagen_no_disponible.svg/1024px-Imagen_no_disponible.svg.png';" alt="Imagen no disponible">
-        <p>Testeando compartido en comidaespecifica: {{$store.state.numero}}</p>
-        <button @click="$store.commit('aumentar', 2)">+</button>
+        
     </div>
 </template>
 
 <script>
+import {mapState, mapActions, mapMutations} from 'vuex';
+
 export default {
     name: 'ComidaEspecifica',
     props: {
@@ -23,33 +43,31 @@ export default {
     },
     data: function() {
         return {
-            comida:null,
-            nombre: null,
-            errorComida:null,
-            descripcion: null,
-            ubicacion: null,
-            video: null,
-            imagen: null,
+            recetas:null,
         };
     },
+    computed: {
+        ...mapState(['comidaActual']),
+    },
+    methods: {
+        ...mapMutations(['comidaEspecificaMutacion']),
+        ...mapActions(['obtenerComidaEspecificaAction']),
+    },
+    beforeMount(){
+        this.obtenerComidaEspecificaAction(this.$route.params.id);
+    },
     mounted(){
-        var direccion ="http://127.0.0.1:8000/api/comidas/"+this.$route.params.id;
-        //console.log(direccion);
-        fetch(direccion)
-            .then((res) => res.json())
+        var direccion = "http://127.0.0.1:8000/api/recetasDeComida/"+this.$route.params.id;
+        fetch(direccion).then((res) => res.json())
             .then(
                 (result) => {
-                    this.comida = result;
-                    this.nombre = this.comida.nombre;
-                    this.descripcion = this.comida.descripcion;
-                    this.ubicacion = this.comida.ubicacion;
-                    this.imagen = this.comida.imagen;
-                    this.video=this.comida.video;
+                    this.recetas = result;
                 },
                 (error) => {
-                    this.errorComida = error;
+                    console.log(error);
+                    this.recetas=null;
                 }
-            )
-    }
+            );
+    },
 }
 </script>

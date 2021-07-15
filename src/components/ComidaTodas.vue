@@ -4,12 +4,12 @@
         <h1>Comidas</h1>
         <!--A partir de aca testeamos la conexión con la API, en este caso trayendo las comidas-->
         <hr>
-        <h2 class="text-center py-4">Traer todas las comidas de la api</h2>
+        <h2 class="text-center py-4">Comidas disponibles en la plataforma</h2>
         <div class="row" v-if="comidas">
-            <div class="col-sm-4" v-for="comida in comidas" :key="comida.id_comida">
+            <div class="col-sm-3" v-for="comida in comidas" :key="comida.id_comida">
                 <router-link class="text-reset text-decoration-none" :to="{ name: 'ComidaEspecifica', params: {id: comida.id_comida}}">
                 <div v-bind:id="'comidanro'+comida.id_comida" class="card bg-transparent">
-                    <img v-if="comida.imagen!=null" width="200" height="200" class="card-img-top img" :src=comida.imagen onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Imagen_no_disponible.svg/1024px-Imagen_no_disponible.svg.png';" alt="Imagen no disponible">
+                    <img v-if="comida.imagen" width="200" height="200" class="card-img-top img" :src=comida.imagen onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Imagen_no_disponible.svg/1024px-Imagen_no_disponible.svg.png';" alt="Imagen no disponible">
                     <hr class="m-0 p-0">
                     <div class="card-body">
                         <h3 class="card-title text-left">{{comida.nombre}}</h3>
@@ -22,6 +22,10 @@
         <ul id="errorComida" v-if="errorComida">
             <p>Error: {{errorComida}}</p>
         </ul>
+        <div class="d-flex justify-content-center my-2" id="nomascomidas">
+            <p class="text-white text-center w-25 bg-secondary">{{comidaFull}}</p>
+        </div>
+        <button @click="agregarMasComidasMutacion" class="btn btn-primary my-4">Agregar más comidas</button>
         <hr>
     </div>
 </template>
@@ -47,10 +51,10 @@ export default {
     },
     // Métodos JS que se ejecutan en este archivo vue
     computed: {
-        ...mapState(['comidas']),
+        ...mapState(['comidas', 'comidaFull']),
     },
     methods: {
-        ...mapMutations(['comidaMutacion']),
+        ...mapMutations(['comidaMutacion', 'agregarMasComidasMutacion']),
         ...mapActions(['obtenerComidasAction']),
     },
     beforeMount(){

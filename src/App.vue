@@ -3,10 +3,10 @@
     <img alt="Vue logo" src="./assets/logo.png">
     <div id="nav">
       <router-link to="/">Home</router-link> |
-      <router-link to="/about">About</router-link> |
-      <router-link to="/comidas">Comidas</router-link>
+      <router-link to="/comidas">Comidas</router-link> |
+      <router-link to="/ingredientes">Ingredientes</router-link>
     </div>
-    <router-view/>
+    <router-view :key="$route.path"/>
 
     <!--<ComidasConAction></ComidasConAction>-->
     <!--<HelloWorld msg="Welcome to Your Vue.js App :) probando si hace deploy y puedo hacer push desde git"/>-->
@@ -33,13 +33,4 @@ export default {
 }
 </script>
 
-<style>
-#app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  /*text-align: center;*/
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
+
