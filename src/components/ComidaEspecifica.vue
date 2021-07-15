@@ -3,14 +3,14 @@
         <h2>Comida: {{comidaActual.nombre}}</h2>
         <div class="row">
             <div class="col-9">
-                <p>Descripción: {{comidaActual.descripcion}}</p>
-                <p>Ubicación: {{comidaActual.ubicacion}}</p>
+                <img class="img" :src=comidaActual.imagen onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Imagen_no_disponible.svg/1024px-Imagen_no_disponible.svg.png';" alt="Imagen no disponible">
+                <p v-if="comidaActual.descripcion">Descripción: {{comidaActual.descripcion}}</p>
+                <p v-if="comidaActual.ubicacion">Ubicación: {{comidaActual.ubicacion}}</p>
                 <div v-if="comidaActual.video!=null"> 
                     <div class="embed-responsive embed-responsive-16by9">     
                     <iframe class="embed-responsive-item" :src="'https://www.youtube.com/embed/'+comidaActual.video" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
                     </div>
                 </div>
-                <img class="img" :src=comidaActual.imagen onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Imagen_no_disponible.svg/1024px-Imagen_no_disponible.svg.png';" alt="Imagen no disponible">
                 <!--<p>Comida compartida: {{$store.state.comidaActual}}</p>-->
             </div>
             <div class="col-3">

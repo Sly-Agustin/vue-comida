@@ -22,8 +22,16 @@
                     <p>{{recetaActual}}</p>          
                 </div>
             </div>
-            <div class="col-sm-3">
-
+            <div class="col-sm-3 border-left">
+                <h4 class="py-2">Ingredientes necesarios:</h4>
+                <div class="py-4">       
+                <div v-for="ingrediente in recetaActual.seUtilizan" :key="ingrediente.id_utilizaen">
+                    <li class="listaIngredientes">
+                        <span class="text-uppercase"><span>{{ingrediente.nombreIngrediente}} </span></span>
+                        <span class="ingredienteCantidad font-weight-bold">{{ingrediente.cantidad}} <abbr title=""></abbr></span>
+                    </li>
+                </div>
+                </div> 
             </div>
         </div>
     </div>

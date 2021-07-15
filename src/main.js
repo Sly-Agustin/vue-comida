@@ -2,15 +2,20 @@ import Vue from 'vue'
 import Vuex from 'vuex'
 import App from './App.vue'
 import './assets/css/fonts.css';
-import 'bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'jquery/src/jquery.js';
 import 'bootstrap/dist/js/bootstrap.min.js';
 import router from './router'
 
+import BootstrapVue from 'bootstrap-vue'
+import 'bootstrap/dist/css/bootstrap.css'
+import 'bootstrap-vue/dist/bootstrap-vue.css'
+import 'bootstrap'
+
 Vue.config.productionTip = false
 
 Vue.use(Vuex)
+Vue.use(BootstrapVue)
 
 const store = new Vuex.Store({
     state: {
