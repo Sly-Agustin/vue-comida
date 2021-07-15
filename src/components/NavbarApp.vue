@@ -1,8 +1,9 @@
 <template>
     <div>
         <b-navbar toggleable="lg" type="dark" class="colorBackgroundFuerte">
-            <b-navbar-brand href="#">GourmetCooking</b-navbar-brand>
-
+            
+            <b-navbar-brand :to="{name: 'Home'}"><img width="50" height="50" alt="Vue logo" src="./../assets/logoinvertido.png"> GourmetCooking</b-navbar-brand>
+            
             <b-navbar-toggle target="nav-collapse"></b-navbar-toggle>
 
             <b-collapse id="nav-collapse" is-nav>
