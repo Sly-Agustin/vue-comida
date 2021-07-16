@@ -25,7 +25,8 @@
                 <tr>
                     <th scope="row">{{ingrediente.nombre}}</th>
                     <td>{{ingrediente.tipo}}</td>
-                    <td><img width="100" height="60" :src=ingrediente.imagen class="d-inline-block align-center" onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Imagen_no_disponible.svg/1024px-Imagen_no_disponible.svg.png';" alt="img"></td>
+                    <td v-if="ingrediente.imagen!=null"><img width="100" height="60" :src=ingrediente.imagen class="d-inline-block align-center" onerror="this.onerror=null;this.src='https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Imagen_no_disponible.svg/1024px-Imagen_no_disponible.svg.png';" alt="img"></td>
+                    <td v-if="ingrediente.imagen==null"><img width="100" height="60" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/da/Imagen_no_disponible.svg/1024px-Imagen_no_disponible.svg.png" class="d-inline-block align-center" alt="img"></td>
                 </tr>
             </tbody>
         </table>
