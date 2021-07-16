@@ -1,0 +1,17 @@
+.colorBackgroundSuave {
+    background: #F6DCBF;
+}
+
+.colorBackgroundFuerte{
+    background: #E1701A;
+}
+
+body {
+    margin-bottom: 80px;
+    padding-bottom: 40px; 
+}
+
+.badge-colorBackground{
+    color: #fff;
+    background-color: #F7A440;
+}
