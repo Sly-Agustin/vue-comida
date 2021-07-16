@@ -22,7 +22,6 @@ Vue.use(BootstrapVue)
 
 const store = new Vuex.Store({
     state: {
-      numero: 10,
       comidasTotales: [],
       comidas: [],
       cantidadComidas:0,
@@ -40,12 +39,6 @@ const store = new Vuex.Store({
       recetaActual: [],
     },
     mutations: {
-      aumentar(state, n){
-        state.numero=state.numero+n;
-      },
-      disminuir(state){
-        state.numero=state.numero-1;
-      },
       comidaMutacion(state, comidas){
         state.comidasTotales = comidas;
         for(state.cantidadComidas; state.cantidadComidas<10; state.cantidadComidas++){
@@ -57,22 +50,16 @@ const store = new Vuex.Store({
         if (state.cantidadComidas<jsonlength-10){
           var aux=state.cantidadComidas+10;
           for(state.cantidadComidas; state.cantidadComidas<aux ;state.cantidadComidas++){
-            console.log('Agregando con longitud 10');
-            console.log('Longitud del json: '+jsonlength+', Longitud actual: '+state.cantidadComidas);
             state.comidas.push(state.comidasTotales[state.cantidadComidas]);
           }
         }
         else{
           if (state.cantidadComidas===jsonlength){
-            console.log('No debería haber mas para agregar');
-            console.log('Longitud del json: '+jsonlength+', Longitud actual: '+state.cantidadComidas);
             state.comidaFull="No hay más comidas";
           }
           else{
-            console.log('Agregando longitud chica');
             state.comidas.push(state.comidasTotales[state.cantidadComidas]);
             state.cantidadComidas++;
-            console.log('Longitud del json: '+jsonlength+', Longitud actual: '+state.cantidadComidas);
           }
         }
       },
@@ -90,22 +77,16 @@ const store = new Vuex.Store({
         if (state.cantidadIngredientes<jsonlength-10){
           var aux=state.cantidadIngredientes+10;
           for(state.cantidadIngredientes; state.cantidadIngredientes<aux ;state.cantidadIngredientes++){
-            console.log('Agregando con longitud 10');
-            console.log('Longitud del json: '+jsonlength+', Longitud actual: '+state.cantidadIngredientes);
             state.ingredientes.push(state.ingredientesTotales[state.cantidadIngredientes]);
           }
         }
         else{
           if (state.cantidadIngredientes===jsonlength){
-            console.log('No debería haber mas para agregar');
-            console.log('Longitud del json: '+jsonlength+', Longitud actual: '+state.cantidadIngredientes);
             state.ingredienteFull="No hay más ingredientes";
           }
           else{
-            console.log('Agregando longitud chica');
             state.ingredientes.push(state.ingredientesTotales[state.cantidadIngredientes]);
             state.cantidadIngredientes++;
-            console.log('Longitud del json: '+jsonlength+', Longitud actual: '+state.cantidadIngredientes);
           }
         }
       },
