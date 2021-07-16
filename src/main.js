@@ -111,7 +111,6 @@ const store = new Vuex.Store({
         context.commit('comidaMutacion', coms);
       }*/
       obtenerComidasAction: async function ({ commit }){
-        //const headers = { 'Access-Control-Allow-Origin':'*'};
         const datos = await fetch('https://sly-agustin-laravel.herokuapp.com/api/comidas');
         const coms = await datos.json();
         commit('comidaMutacion', coms);
