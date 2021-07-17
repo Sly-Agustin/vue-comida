@@ -4,14 +4,8 @@
         <!--A partir de aca testeamos la conexión con la API, en este caso trayendo las comidas-->
         <hr>
         <IngredientesBuscador></IngredientesBuscador>
+        
         <h2 class="text-center py-4">Ingredientes disponibles</h2>
-        <!--<ul v-for="ingrediente of ingredientes" :key="ingrediente.id_ingrediente">
-            <li>{{ingrediente.nombre}}</li>
-            <div v-bind:id="'ingrediente'+ingrediente.id_ingrediente"></div>
-        </ul>   
-        <ul id="errorIngrediente" v-if="errorIngrediente">
-            <p>Error: {{errorIngrediente}}</p>
-        </ul>-->
         <div class="container">
         <table class="table">
             <thead>
